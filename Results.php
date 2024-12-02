@@ -19,3 +19,4 @@ foreach ($responses as $index => $response) {
         echo "<p>Q" . ($index + 1) . ": Incorrect. Correct answer: $correct</p>";
     }
 }
+?>
