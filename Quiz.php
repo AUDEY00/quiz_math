@@ -30,11 +30,27 @@ for ($i = 0; $i < $num_questions; $i++) {
             $correct_answer = $a * $b;
             break;
         case 'division':
-            $b = max(1, $b); // Prevent division by zero
+            $b = max(1, $b); 
             $questions[] = "$a ÷ $b";
             $correct_answer = round($a / $b, 2);
             break;
     }
+    while (count($incorrect_answers) < 3) {
+        $random_answer = rand($correct_answer - 10, $correct_answer + 10);
+        if ($random_answer != $correct_answer && !in_array($random_answer, $incorrect_answers)) {
+            $incorrect_answers[] = $random_answer;
+        }
+    }
+    
+    $all_options = $incorrect_answers;
+    $all_options[] = $correct_answer;
+    shuffle($all_options);
+    
+    $options[] = $all_options;
+    $answers[] = $correct_answer;
+}
+
+$_SESSION['answers'] = $answers;
 ?>
 
 <!DOCTYPE html>
