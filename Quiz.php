@@ -4,6 +4,37 @@ if (!isset($_SESSION['num_questions'], $_SESSION['quiz_type'])) {
     header('Location: Settings.php');
     exit;
 }
+$num_questions = $_SESSION['num_questions'];
+$quiz_type = $_SESSION['quiz_type'];
+$questions = [];
+$options = [];
+$answers = [];
+
+for ($i = 0; $i < $num_questions; $i++) {
+    $a = rand(1, 20);
+    $b = rand(1, 20);
+    $correct_answer = 0;
+    $incorrect_answers = [];
+
+    switch ($quiz_type) {
+        case 'addition':
+            $questions[] = "$a + $b";
+            $correct_answer = $a + $b;
+            break;
+        case 'subtraction':
+            $questions[] = "$a - $b";
+            $correct_answer = $a - $b;
+            break;
+        case 'multiplication':
+            $questions[] = "$a × $b";
+            $correct_answer = $a * $b;
+            break;
+        case 'division':
+            $b = max(1, $b); // Prevent division by zero
+            $questions[] = "$a ÷ $b";
+            $correct_answer = round($a / $b, 2);
+            break;
+    }
 ?>
 
 <!DOCTYPE html>
