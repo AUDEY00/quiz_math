@@ -19,4 +19,9 @@ foreach ($responses as $index => $response) {
         echo "<p>Q" . ($index + 1) . ": Incorrect. Correct answer: $correct</p>";
     }
 }
+
+$percentage = ($score / count($answers)) * 100;
+echo "<h2>Your Score: $score / " . count($answers) . " ($percentage%)</h2>";
+
+session_destroy();
 ?>
