@@ -7,3 +7,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit;
 }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Math Quiz Settings</title>
+</head>
+<body>
+    
+</body>
+</html>
